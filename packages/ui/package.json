@@ -112,7 +112,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "serve": "vite",
+        "start": "npm run build && npx serve -s build -l 3000",
         "build": "vite build",
         "test": "jest",
         "clean": "rimraf build",
