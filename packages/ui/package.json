@@ -110,7 +110,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "start": "vite",
+        "serve": "vite",
         "build": "vite build",
         "test": "jest",
         "clean": "rimraf build",
