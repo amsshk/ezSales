@@ -4,8 +4,8 @@
     "license": "SEE LICENSE IN LICENSE.md",
     "homepage": "https://flowiseai.com",
     "author": {
-        "name": "HenryHeng",
-        "email": "henryheng@flowiseai.com"
+        "name": "amsshk",
+        "email": "amshk@aol.com"
     },
     "overrides": {
         "prebuild-install": "7.1.3",
