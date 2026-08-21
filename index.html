@@ -436,11 +436,11 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1096364099775392');
+    fbq('init', '1066456425924706');
     fbq('track', 'PageView');
     </script>
     <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1096364099775392&ev=PageView&noscript=1" />
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1066456425924706&ev=PageView&noscript=1" />
     </noscript>
 
     <div class="lang-toggle">
@@ -644,14 +644,32 @@
                     });
                 }
 
-                // Send to your backend/webhook
-                // Replace with your actual endpoint
-                const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                // Send to n8n webhook
+                const response = await fetch('https://ezn888n.app.n8n.cloud/webhook/meta-lead', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify({
+                        source: 'meta-landing',
+                        leadId: `meta-${Date.now()}`,
+                        receivedAt: new Date().toISOString(),
+                        contact: {
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone
+                        },
+                        campaign: {
+                            campaignName: '888clinic Botox & Filler Consultation'
+                        },
+                        qualification: {
+                            status: 'new',
+                            service: formData.service,
+                            area: formData.area,
+                            preferredTime: formData.time
+                        },
+                        tags: ['meta-ads', 'consultation-form', currentLang]
+                    })
                 });
 
                 if (response.ok || response.status === 429) {
